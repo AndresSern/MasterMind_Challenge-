@@ -1,3 +1,5 @@
+import {changeCurrentRow2} from "./utils/changeCurrentRow.js"
+
 $(document).ready(function(){
 
     const socket = io()
@@ -21,14 +23,14 @@ $(document).ready(function(){
 	let btn = document.getElementById('btnSubmit');
 	btn.addEventListener('click', function() {
 		let cell1 = $("#"+currentBoardCells[0]);
-	let cell2 = $("#"+currentBoardCells[1]);
-	let cell3 = $("#"+currentBoardCells[2]);
-	let cell4 = $("#"+currentBoardCells[3]);
+        let cell2 = $("#"+currentBoardCells[1]);
+        let cell3 = $("#"+currentBoardCells[2]);
+        let cell4 = $("#"+currentBoardCells[3]);
 
-	c1 = colors[cell1.css("background-color")];
-	c2 = colors[cell2.css("background-color")];
-	c3 = colors[cell3.css("background-color")];
-	c4 = colors[cell4.css("background-color")];
+	    let c1 = colors[cell1.css("background-color")];
+	    let c2 = colors[cell2.css("background-color")];
+	    let c3 = colors[cell3.css("background-color")];
+	    let c4 = colors[cell4.css("background-color")];
 	
 		socket.emit('player', {row: [c1, c2, c3, c4]})
 	});
@@ -119,26 +121,10 @@ $(document).ready(function(){
     $(".submit").click(function(){
         updatePegs();
         checkWin();
-        changeCurrentRow();
+        // changeCurrentRow();
+        [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
     });
-	
 
-    //change the valid board cells to click on
-    function changeCurrentRow(){
-        currentRow -= 1;
-        var mult = 4;
-
-        currentBoardCells = [
-            "board" + (currentRow*mult-4), 
-            "board" + (currentRow*mult-3), 
-            "board" + (currentRow*mult-2), 
-            "board" + (currentRow*mult-1)];
-        currentPegCells = [
-            "peg" + (currentRow*mult-4), 
-            "peg" + (currentRow*mult-3), 
-            "peg" + (currentRow*mult-2), 
-            "peg" + (currentRow*mult-1)];
-    }
 
     //check whether the cell clicked on is valid
     function isValid(id){
