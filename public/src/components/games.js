@@ -1,4 +1,4 @@
-import {changeCurrentRow2} from "./utils/changeCurrentRow.js"
+import {changeCurrentRow2, genColorCode} from "./utils/core.js"
 
 $(document).ready(function(){
 
@@ -59,13 +59,7 @@ $(document).ready(function(){
     }
 
     //create the random color code
-    var code = [
-        possibleColors[Math.floor(Math.random()*6)], 
-        possibleColors[Math.floor(Math.random()*6)],
-        possibleColors[Math.floor(Math.random()*6)],
-        possibleColors[Math.floor(Math.random()*6)]
-    ];
-    
+    var code = genColorCode(possibleColors);
     console.log(code);
 
     //create the cells and add them to the board
@@ -121,7 +115,6 @@ $(document).ready(function(){
     $(".submit").click(function(){
         updatePegs();
         checkWin();
-        // changeCurrentRow();
         [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
     });
 
