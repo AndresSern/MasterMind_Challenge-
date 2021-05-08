@@ -1,4 +1,4 @@
-import {changeCurrentRow2, genColorCode} from "./utils/core.js"
+import {changeCurrentRow2, genColorCode, checkWin} from "./utils/core.js"
 
 $(document).ready(function(){
 
@@ -114,7 +114,7 @@ $(document).ready(function(){
     //do actions when the submit button is clicked
     $(".submit").click(function(){
         updatePegs();
-        checkWin();
+        hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
         [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
     });
 
@@ -128,21 +128,30 @@ $(document).ready(function(){
     }
 
     //check if the player has won
-    function checkWin(){
-        if(code[0] === cell1Color &&
-            code[1] === cell2Color &&
-            code[2] === cell3Color &&
-            code[3] === cell4Color){
-            hasWon = true;
-            alert("Congratulations, you have won!\nThe code will now be displayed.");
-            //set the colors of the code box
+    // function checkWin(){
+    //     if(code[0] === cell1Color &&
+    //         code[1] === cell2Color &&
+    //         code[2] === cell3Color &&
+    //         code[3] === cell4Color){
+    //         hasWon = true;
+    //         alert("Congratulations, you have won!\nThe code will now be displayed.");
+    //         //set the colors of the code box
+    //         $("#secretColor1").css("background-color", code[0]);
+    //         $("#secretColor2").css("background-color", code[1]);
+    //         $("#secretColor3").css("background-color", code[2]);
+    //         $("#secretColor4").css("background-color", code[3]);
+    //     }
+
+    //     return hasWon; 
+    // }
+
+    function showCode(hasWon) {
+        if (hasWon){
             $("#secretColor1").css("background-color", code[0]);
             $("#secretColor2").css("background-color", code[1]);
             $("#secretColor3").css("background-color", code[2]);
             $("#secretColor4").css("background-color", code[3]);
         }
-
-        return hasWon; 
     }
 
     //change the pegs depending on the cell colors

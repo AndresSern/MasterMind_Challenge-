@@ -19,3 +19,15 @@ export function genColorCode(possibleColors){
     })
     return code
 };
+
+
+export function checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color){
+    if(code[0] === cell1Color &&
+        code[1] === cell2Color &&
+        code[2] === cell3Color &&
+        code[3] === cell4Color) {
+        hasWon = true;
+        alert("Congratulations, you have won!\nThe code will now be displayed.");
+    }
+    return hasWon; 
+}
