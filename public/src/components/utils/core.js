@@ -31,3 +31,13 @@ export function checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4
     }
     return hasWon; 
 }
+
+
+export function showCode(hasWon, code) {
+        if (hasWon){
+            $("#secretColor1").css("background-color", code[0]);
+            $("#secretColor2").css("background-color", code[1]);
+            $("#secretColor3").css("background-color", code[2]);
+            $("#secretColor4").css("background-color", code[3]);
+        }
+    }
