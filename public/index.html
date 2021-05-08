@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" type="text/css" href="./src/css/style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Mastermind</title>
 	</head>
 	<body>
 		<header></header>
 		<main>
 			<div class="left">
-				<img class="left_img" src="./src/css/images/left_image_landing.png" />
+				<img class="left_img" src="./src/css/images/left_image_landing.png" alt="Funny ilustrated robot and shapes from space with colored dots" />
 			</div>
 			<div class="center">
 				<article class="rules">
@@ -24,23 +24,30 @@
 					</p>
 					<p>Aenean viverra ipsum dui, at rutr</p>
 				</article>
-				<button class="start button">START</button>
-				<div id="menu"></div>
-				<!-- <div class="content">
-					<div class="submit multiplayer">Multiplayer</div>
-					<div class="submit">Code Braker</div>
-    			</div> -->
+				<div id="id_content" class="content">
+					<img class="close" src="./src/css/images/close_button_cross.png"/>
+					<h2 class="choose_a_game">
+						CHOOSE <br/>
+						GAME MODE
+					</h2>
+					<div class="submit onevsone">1 vs 1</div>
+					<div class="submit onevsbot">1 vs bot</div>
+					
+				</div>
+				<button class="start">START HERE</button>
 			</div>
 			<div class="right">
-				<img class="right_img" src="./src/css/images/right_img_landing_page.png" />
+				<img class="right_img" src="./src/css/images/right_img_landing_page.png" alt="Funny ilustrated robots and shapes from space with colored dots" />
 			</div>
 		</main>
 		<footer>
-			<p>
-				Created By Andres Gonzales, Adrian Vides, Estephania Carvajal, Andres
-				Campo
+			<p class="credit">
+				Created By <a target="_blank" href="https://www.linkedin.com/in/andresgfranco/">Andres Gonzalez</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/">Adrian Vides</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/">Estefania Carvajal</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/">Andres Campo</a>
 			</p>
 		</footer>
-		<script src="menu.js"></script>
+		<script type="module" src="./src/components/menu.js"></script>
 	</body>
 </html>

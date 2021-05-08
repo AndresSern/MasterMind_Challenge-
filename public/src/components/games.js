@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    const socket = io()
+    const socket = io();
     // let comb_code= document.getElementById('comb_code');
     // let room_code = document.getElementById('room_code');
     // let btn = document.getElementById('send');
