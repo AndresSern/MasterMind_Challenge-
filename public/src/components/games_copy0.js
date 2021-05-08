@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
+  /* const socket = io.connect('5000'); */
   const socket = io();
+  let room_code = document.URL.split('/')[3];
+  socket.emit('join room', room_code);
   // let comb_code= document.getElementById('comb_code');
   // let room_code = document.getElementById('room_code');
   // let btn = document.getElementById('send');
@@ -30,8 +33,14 @@ c2 = colors[cell2.css("background-color")];
 c3 = colors[cell3.css("background-color")];
 c4 = colors[cell4.css("background-color")];
 
-  socket.emit('player', {row: [c1, c2, c3, c4]})
+  /* socket.emit('player', {row: [c1, c2, c3, c4]}) */
+  /* socket.to(room_code).emit('player', {row: [c1, c2, c3, c4]}) */
+  socket.emit('player comb', {row: [c1, c2, c3, c4]}, room_code);
 });
+
+socket.on('test', (comb) => {
+    console.log(comb);
+})
 
 socket.on('server_msg', function (data) {
   console.log(data);

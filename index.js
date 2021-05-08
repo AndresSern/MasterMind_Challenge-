@@ -36,5 +36,15 @@ io.on('connection', (socket) => {
 
     socket.on('player', (data) => {
         io.sockets.emit('server_msg', data);
-    })
+    });
+
+		socket.on('join room', (data) => {
+			socket.join(data);
+			console.log('joined room', data);
+		});
+
+		socket.on('player comb', (comb, room_code) => {
+			console.log(comb, room_code);
+			socket.to(room_code).emit("test", comb);
+		});
 });

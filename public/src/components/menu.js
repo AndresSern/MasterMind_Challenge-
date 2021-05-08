@@ -3,7 +3,7 @@ let rules = document.querySelector('.rules');
 let content = document.querySelector('.content');
 let close = document.querySelector('.close');
 let submit = document.querySelector('.submit');
-let code_breaker = document.querySelector('.code_breaker');
+//let code_breaker = document.querySelector('.code_breaker');
 let onevsone = document.getElementById('onevsone');
 let onevsbot = document.getElementById('onevsbot');
 
