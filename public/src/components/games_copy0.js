@@ -1,3 +1,5 @@
+import {changeCurrentRow2, genColorCode, checkWin, showCode, updatePegs, checkRow} from "./utils/core.js"
+
 $(document).ready(function(){
 
   /* const socket = io.connect('5000'); */
@@ -23,19 +25,19 @@ var currentBoardCells = ["board40", "board41", "board42", "board43"];
 
 let btn = document.getElementById('btnSubmit');
 btn.addEventListener('click', function() {
-  let cell1 = $("#"+currentBoardCells[0]);
-let cell2 = $("#"+currentBoardCells[1]);
-let cell3 = $("#"+currentBoardCells[2]);
-let cell4 = $("#"+currentBoardCells[3]);
+    let cell1 = $("#"+currentBoardCells[0]);
+    let cell2 = $("#"+currentBoardCells[1]);
+    let cell3 = $("#"+currentBoardCells[2]);
+    let cell4 = $("#"+currentBoardCells[3]);
 
-c1 = colors[cell1.css("background-color")];
-c2 = colors[cell2.css("background-color")];
-c3 = colors[cell3.css("background-color")];
-c4 = colors[cell4.css("background-color")];
+    let c1 = colors[cell1.css("background-color")];
+    let c2 = colors[cell2.css("background-color")];
+    let c3 = colors[cell3.css("background-color")];
+    let c4 = colors[cell4.css("background-color")];
 
-  /* socket.emit('player', {row: [c1, c2, c3, c4]}) */
-  /* socket.to(room_code).emit('player', {row: [c1, c2, c3, c4]}) */
-  socket.emit('player comb', {row: [c1, c2, c3, c4]}, room_code);
+    /* socket.emit('player', {row: [c1, c2, c3, c4]}) */
+    /* socket.to(room_code).emit('player', {row: [c1, c2, c3, c4]}) */
+    socket.emit('player comb', {row: [c1, c2, c3, c4]}, room_code);
 });
 
 socket.on('test', (comb) => {
@@ -126,28 +128,38 @@ socket.on('server_msg', function (data) {
 
   //do actions when the submit button is clicked
   $(".submit").click(function(){
-      updatePegs();
-      checkWin();
-      changeCurrentRow();
+    //   updatePegs();
+    //   checkWin();
+    //   changeCurrentRow();
+    let validRow = checkRow(currentBoardCells, colors, cell1Color, cell2Color, cell3Color, cell4Color);
+    // let validRow = true
+    if (validRow) {
+        [cell1Color, cell2Color, cell3Color, cell4Color] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
+        hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
+        showCode(hasWon, code);
+        [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
+    } else {
+        alert("The code is not complete.");
+    }
   });
 
 
-  //change the valid board cells to click on
-  function changeCurrentRow(){
-      currentRow -= 1;
-      var mult = 4;
+//   //change the valid board cells to click on
+//   function changeCurrentRow(){
+//       currentRow -= 1;
+//       var mult = 4;
 
-      currentBoardCells = [
-          "board" + (currentRow*mult-4), 
-          "board" + (currentRow*mult-3), 
-          "board" + (currentRow*mult-2), 
-          "board" + (currentRow*mult-1)];
-      currentPegCells = [
-          "peg" + (currentRow*mult-4), 
-          "peg" + (currentRow*mult-3), 
-          "peg" + (currentRow*mult-2), 
-          "peg" + (currentRow*mult-1)];
-  }
+//       currentBoardCells = [
+//           "board" + (currentRow*mult-4), 
+//           "board" + (currentRow*mult-3), 
+//           "board" + (currentRow*mult-2), 
+//           "board" + (currentRow*mult-1)];
+//       currentPegCells = [
+//           "peg" + (currentRow*mult-4), 
+//           "peg" + (currentRow*mult-3), 
+//           "peg" + (currentRow*mult-2), 
+//           "peg" + (currentRow*mult-1)];
+//   }
 
   //check whether the cell clicked on is valid
   function isValid(id){
@@ -157,166 +169,166 @@ socket.on('server_msg', function (data) {
       return false;
   }
 
-  //check if the player has won
-  function checkWin(){
-      if(code[0] === cell1Color &&
-          code[1] === cell2Color &&
-          code[2] === cell3Color &&
-          code[3] === cell4Color){
-          hasWon = true;
-          alert("Congratulations, you have won!\nThe code will now be displayed.");
-          //set the colors of the code box
-          $("#secretColor1").css("background-color", code[0]);
-          $("#secretColor2").css("background-color", code[1]);
-          $("#secretColor3").css("background-color", code[2]);
-          $("#secretColor4").css("background-color", code[3]);
-      }
+//   //check if the player has won
+//   function checkWin(){
+//       if(code[0] === cell1Color &&
+//           code[1] === cell2Color &&
+//           code[2] === cell3Color &&
+//           code[3] === cell4Color){
+//           hasWon = true;
+//           alert("Congratulations, you have won!\nThe code will now be displayed.");
+//           //set the colors of the code box
+//           $("#secretColor1").css("background-color", code[0]);
+//           $("#secretColor2").css("background-color", code[1]);
+//           $("#secretColor3").css("background-color", code[2]);
+//           $("#secretColor4").css("background-color", code[3]);
+//       }
 
-      return hasWon; 
-  }
+//       return hasWon; 
+//   }
 
-  //change the pegs depending on the cell colors
-  function updatePegs(){
-      let cell1 = $("#"+currentBoardCells[0]);
-      let cell2 = $("#"+currentBoardCells[1]);
-      let cell3 = $("#"+currentBoardCells[2]);
-      let cell4 = $("#"+currentBoardCells[3]);
+//   //change the pegs depending on the cell colors
+//   function updatePegs(){
+//       let cell1 = $("#"+currentBoardCells[0]);
+//       let cell2 = $("#"+currentBoardCells[1]);
+//       let cell3 = $("#"+currentBoardCells[2]);
+//       let cell4 = $("#"+currentBoardCells[3]);
 
-      cell1Color = colors[cell1.css("background-color")];
-      cell2Color = colors[cell2.css("background-color")];
-      cell3Color = colors[cell3.css("background-color")];
-      cell4Color = colors[cell4.css("background-color")];
+//       cell1Color = colors[cell1.css("background-color")];
+//       cell2Color = colors[cell2.css("background-color")];
+//       cell3Color = colors[cell3.css("background-color")];
+//       cell4Color = colors[cell4.css("background-color")];
 
-      let peg1 = $("#"+currentPegCells[0]);
-      let peg2 = $("#"+currentPegCells[1]);
-      let peg3 = $("#"+currentPegCells[2]);
-      let peg4 = $("#"+currentPegCells[3]);
+//       let peg1 = $("#"+currentPegCells[0]);
+//       let peg2 = $("#"+currentPegCells[1]);
+//       let peg3 = $("#"+currentPegCells[2]);
+//       let peg4 = $("#"+currentPegCells[3]);
 
-      let pegs = [peg1, peg2, peg3, peg4];
+//       let pegs = [peg1, peg2, peg3, peg4];
 
-      //array of pegs that have been filled
-      let filledPegs = [];
-      //array of cells that have already been accounted for
-      let chosenCells = [];
-      //create copy of the code array
-      let codeCopy = [...code];
+//       //array of pegs that have been filled
+//       let filledPegs = [];
+//       //array of cells that have already been accounted for
+//       let chosenCells = [];
+//       //create copy of the code array
+//       let codeCopy = [...code];
 
-      //if the colors are in the correct positions, 
-      //  change the pegs to red
-      if(code[0] === cell1Color){
-          //choose a random peg that has not yet been filled
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//       //if the colors are in the correct positions, 
+//       //  change the pegs to red
+//       if(code[0] === cell1Color){
+//           //choose a random peg that has not yet been filled
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //remove the color from codeCopy because it has
-          //  already been accounted for
-          let index = codeCopy.indexOf(cell1Color);
-          if(index > -1){
-              codeCopy.splice(index, 1);
-          }
+//           //remove the color from codeCopy because it has
+//           //  already been accounted for
+//           let index = codeCopy.indexOf(cell1Color);
+//           if(index > -1){
+//               codeCopy.splice(index, 1);
+//           }
 
-          //add number to choseCells to state that this cell
-          //  has now been accounted for
-          chosenCells.push(1);
+//           //add number to choseCells to state that this cell
+//           //  has now been accounted for
+//           chosenCells.push(1);
 
-          //fill the according peg
-          pegs[num-1].css("background-color", "red");
-      }
-      if(code[1] === cell2Color){
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           //fill the according peg
+//           pegs[num-1].css("background-color", "red");
+//       }
+//       if(code[1] === cell2Color){
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //remove the color from codeCopy because it has
-          //  already been accounted for
-          let index = codeCopy.indexOf(cell2Color);
-          if(index > -1){
-              codeCopy.splice(index, 1);
-          }
+//           //remove the color from codeCopy because it has
+//           //  already been accounted for
+//           let index = codeCopy.indexOf(cell2Color);
+//           if(index > -1){
+//               codeCopy.splice(index, 1);
+//           }
 
-          chosenCells.push(2);
+//           chosenCells.push(2);
 
-          pegs[num-1].css("background-color", "red");
-      }
-      if(code[2] === cell3Color){
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           pegs[num-1].css("background-color", "red");
+//       }
+//       if(code[2] === cell3Color){
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //remove the color from codeCopy because it has
-          //  already been accounted for
-          let index = codeCopy.indexOf(cell3Color);
-          if(index > -1){
-              codeCopy.splice(index, 1);
-          }
+//           //remove the color from codeCopy because it has
+//           //  already been accounted for
+//           let index = codeCopy.indexOf(cell3Color);
+//           if(index > -1){
+//               codeCopy.splice(index, 1);
+//           }
 
-          chosenCells.push(3);
+//           chosenCells.push(3);
 
-          pegs[num-1].css("background-color", "red");
-      }
-      if(code[3] === cell4Color){
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           pegs[num-1].css("background-color", "red");
+//       }
+//       if(code[3] === cell4Color){
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //remove the color from codeCopy because it has
-          //  already been accounted for
-          let index = codeCopy.indexOf(cell4Color);
-          if(index > -1){
-              codeCopy.splice(index, 1);
-          }
+//           //remove the color from codeCopy because it has
+//           //  already been accounted for
+//           let index = codeCopy.indexOf(cell4Color);
+//           if(index > -1){
+//               codeCopy.splice(index, 1);
+//           }
 
-          chosenCells.push(4);
+//           chosenCells.push(4);
 
-          pegs[num-1].css("background-color", "red");
-      }
+//           pegs[num-1].css("background-color", "red");
+//       }
 
       
-      //if the code copy includes the colors of the four cells
-      //  then change the pegs to white because the code copy
-      //  now only includes colors that have not been accounted
-      //  for
+//       //if the code copy includes the colors of the four cells
+//       //  then change the pegs to white because the code copy
+//       //  now only includes colors that have not been accounted
+//       //  for
 
-      if(codeCopy.includes(cell1Color) && !chosenCells.includes(1)){
-          //choose a random peg that has not yet been filled
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//       if(codeCopy.includes(cell1Color) && !chosenCells.includes(1)){
+//           //choose a random peg that has not yet been filled
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //fill the according peg
-          pegs[num-1].css("background-color", "white");
-      }       
-      if(codeCopy.includes(cell2Color) && !chosenCells.includes(2)){
-          //choose a random peg that has not yet been filled
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           //fill the according peg
+//           pegs[num-1].css("background-color", "white");
+//       }       
+//       if(codeCopy.includes(cell2Color) && !chosenCells.includes(2)){
+//           //choose a random peg that has not yet been filled
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //fill the according peg
-          pegs[num-1].css("background-color", "white");
-      }    
-      if(codeCopy.includes(cell3Color) && !chosenCells.includes(3)){
-          //choose a random peg that has not yet been filled
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           //fill the according peg
+//           pegs[num-1].css("background-color", "white");
+//       }    
+//       if(codeCopy.includes(cell3Color) && !chosenCells.includes(3)){
+//           //choose a random peg that has not yet been filled
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //fill the according peg
-          pegs[num-1].css("background-color", "white");
-      }    
-      if(codeCopy.includes(cell4Color) && !chosenCells.includes(4)){
-          //choose a random peg that has not yet been filled
-          let num = randomNum14(filledPegs);
-          filledPegs.push(num);
+//           //fill the according peg
+//           pegs[num-1].css("background-color", "white");
+//       }    
+//       if(codeCopy.includes(cell4Color) && !chosenCells.includes(4)){
+//           //choose a random peg that has not yet been filled
+//           let num = randomNum14(filledPegs);
+//           filledPegs.push(num);
 
-          //fill the according peg
-          pegs[num-1].css("background-color", "white");
-      }     
-  }
+//           //fill the according peg
+//           pegs[num-1].css("background-color", "white");
+//       }     
+//   }
 
-  //choose a random number from 1-4 that is not in the given array
-  function randomNum14(nums){
-      //generate a number from 1-4
-      let num = Math.floor(Math.random()*4) + 1;
-      //while that number has already been chosen
-      //  choose another one
-      while(nums.includes(num)){
-          num = Math.floor(Math.random()*4) + 1;
-      }
-      return num;
-  }
+//   //choose a random number from 1-4 that is not in the given array
+//   function randomNum14(nums){
+//       //generate a number from 1-4
+//       let num = Math.floor(Math.random()*4) + 1;
+//       //while that number has already been chosen
+//       //  choose another one
+//       while(nums.includes(num)){
+//           num = Math.floor(Math.random()*4) + 1;
+//       }
+//       return num;
+//   }
 });
