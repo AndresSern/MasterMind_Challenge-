@@ -5,6 +5,7 @@ let close = document.querySelector('.close');
 let submit = document.querySelector('.submit');
 let code_breaker = document.querySelector('.code_breaker');
 let onevsone = document.getElementById('onevsone');
+let onevsbot = document.getElementById('onevsbot');
 
 //import {genCode} from "./utils/genCode.js";
 import {btnMultiplayer} from "./btnMultiplayer.js";
@@ -41,3 +42,12 @@ onevsone.addEventListener('click', () => {
 		count = 1;
 	}
 });
+
+onevsbot.addEventListener('click', ()=> {
+	const brline = document.createElement("br");
+	onevsbot.append(brline);
+	const room = document.createElement("a");
+	room.href = "../../games2.html";
+	room.innerText = "Play";
+	onevsbot.append(room);
+})
