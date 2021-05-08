@@ -42,6 +42,25 @@ export function showCode(hasWon, code) {
         }
     }
 
+
+export function checkRow(currentBoardCells, colors, cell1Color, cell2Color, cell3Color, cell4Color){
+    let [c1, c2, c3, c4] = getCells(currentBoardCells)
+
+    cell1Color = colors[c1.css("background-color")];
+    cell2Color = colors[c2.css("background-color")];
+    cell3Color = colors[c3.css("background-color")];
+    cell4Color = colors[c4.css("background-color")];
+
+    if (undefined === cell1Color ||
+        undefined === cell2Color ||
+        undefined === cell3Color ||
+        undefined === cell4Color) {
+        return false;
+    } else {
+        return true; 
+    }
+}
+
 export function getCells(currentBoardCells) {
     let columns = [0, 1, 2, 3]
     let cells = currentBoardCells.map(function(cellId) {

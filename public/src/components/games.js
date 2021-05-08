@@ -1,4 +1,4 @@
-import {changeCurrentRow2, genColorCode, checkWin, showCode, updatePegs} from "./utils/core.js"
+import {changeCurrentRow2, genColorCode, checkWin, showCode, updatePegs, checkRow} from "./utils/core.js"
 
 $(document).ready(function(){
 
@@ -113,10 +113,17 @@ $(document).ready(function(){
 
     //do actions when the submit button is clicked
     $(".submit").click(function(){
-        [cell1Color, cell2Color, cell3Color, cell4Color ] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
-        hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
-        showCode(hasWon, code);
-        [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
+        // let validRow = checkRow(cell1Color, cell2Color, cell3Color, cell4Color);
+        let validRow = checkRow(currentBoardCells, colors, cell1Color, cell2Color, cell3Color, cell4Color);
+        // let validRow = true
+        if (validRow) {
+            [cell1Color, cell2Color, cell3Color, cell4Color] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
+            hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
+            showCode(hasWon, code);
+            [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
+        } else {
+            alert("The code is not complete.");
+        }
     });
 
 
