@@ -176,7 +176,8 @@ export function updatePegs(currentBoardCells, colors, currentPegCells, code, cel
 
             //fill the according peg
             pegs[num-1].css("background-color", "white");
-        }     
+        }
+        return [cell1Color, cell2Color, cell3Color, cell4Color]
     }
 
 export function randomNum14(nums){

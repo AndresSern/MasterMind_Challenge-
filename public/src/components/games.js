@@ -113,8 +113,7 @@ $(document).ready(function(){
 
     //do actions when the submit button is clicked
     $(".submit").click(function(){
-        // updatePegs();
-        updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
+        [cell1Color, cell2Color, cell3Color, cell4Color ] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
         hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
         showCode(hasWon, code);
         [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
