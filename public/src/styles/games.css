@@ -116,3 +116,7 @@ footer {
 	margin-top:0.5%;
 	color: #2d2d2d;
 }
+
+#hasWon{
+	display: none;
+}
