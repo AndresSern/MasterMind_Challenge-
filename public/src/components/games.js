@@ -23,14 +23,14 @@ $(document).ready(function(){
 	let btn = document.getElementById('btnSubmit');
 	btn.addEventListener('click', function() {
 		let cell1 = $("#"+currentBoardCells[0]);
-	let cell2 = $("#"+currentBoardCells[1]);
-	let cell3 = $("#"+currentBoardCells[2]);
-	let cell4 = $("#"+currentBoardCells[3]);
+        let cell2 = $("#"+currentBoardCells[1]);
+        let cell3 = $("#"+currentBoardCells[2]);
+        let cell4 = $("#"+currentBoardCells[3]);
 
-	c1 = colors[cell1.css("background-color")];
-	c2 = colors[cell2.css("background-color")];
-	c3 = colors[cell3.css("background-color")];
-	c4 = colors[cell4.css("background-color")];
+	    let c1 = colors[cell1.css("background-color")];
+	    let c2 = colors[cell2.css("background-color")];
+	    let c3 = colors[cell3.css("background-color")];
+	    let c4 = colors[cell4.css("background-color")];
 	
 		socket.emit('player', {row: [c1, c2, c3, c4]})
 	});
@@ -59,13 +59,7 @@ $(document).ready(function(){
     }
 
     //create the random color code
-    var code = [
-        possibleColors[Math.floor(Math.random()*6)], 
-        possibleColors[Math.floor(Math.random()*6)],
-        possibleColors[Math.floor(Math.random()*6)],
-        possibleColors[Math.floor(Math.random()*6)]
-    ];
-    
+    var code = genColorCode(possibleColors);
     console.log(code);
 
     //create the cells and add them to the board
@@ -119,39 +113,18 @@ $(document).ready(function(){
 
     //do actions when the submit button is clicked
     $(".submit").click(function(){
-
-        // updatePegs();
-        // checkWin();
-        // changeCurrentRow();
-        et validRow = checkRow(currentBoardCells, colors, cell1Color, cell2Color, cell3Color, cell4Color);
-    // let validRow = true
-    if (validRow) {
-        [cell1Color, cell2Color, cell3Color, cell4Color] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
-        hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
-        showCode(hasWon, code);
-        [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
-    } else {
-        alert("The code is not complete.");
-    }
+        // let validRow = checkRow(cell1Color, cell2Color, cell3Color, cell4Color);
+        let validRow = checkRow(currentBoardCells, colors, cell1Color, cell2Color, cell3Color, cell4Color);
+        // let validRow = true
+        if (validRow) {
+            [cell1Color, cell2Color, cell3Color, cell4Color] = updatePegs(currentBoardCells, colors, currentPegCells, code, cell1Color, cell2Color, cell3Color, cell4Color)
+            hasWon = checkWin(hasWon, code, cell1Color, cell2Color, cell3Color, cell4Color);
+            showCode(hasWon, code);
+            [currentRow, currentBoardCells, currentPegCells] = changeCurrentRow2(currentRow, 4);
+        } else {
+            alert("The code is not complete.");
+        }
     });
-	
-
-    //change the valid board cells to click on
-    // function changeCurrentRow(){
-    //     currentRow -= 1;
-    //     var mult = 4;
-
-    //     currentBoardCells = [
-    //         "board" + (currentRow*mult-4), 
-    //         "board" + (currentRow*mult-3), 
-    //         "board" + (currentRow*mult-2), 
-    //         "board" + (currentRow*mult-1)];
-    //     currentPegCells = [
-    //         "peg" + (currentRow*mult-4), 
-    //         "peg" + (currentRow*mult-3), 
-    //         "peg" + (currentRow*mult-2), 
-    //         "peg" + (currentRow*mult-1)];
-    // }
 
     //check whether the cell clicked on is valid
     function isValid(id){
@@ -160,6 +133,9 @@ $(document).ready(function(){
         }
         return false;
     }
+
+
+});
 
     //check if the player has won
     // function checkWin(){
