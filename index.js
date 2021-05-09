@@ -47,4 +47,9 @@ io.on('connection', (socket) => {
 			console.log(comb, room_code);
 			socket.to(room_code).emit("test", comb);
 		});
+
+		socket.on('player code', (code, room_code) => {
+			console.log(code, room_code);
+			socket.to(room_code).emit("test1", code);
+		});
 });
