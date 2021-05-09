@@ -6,11 +6,8 @@
     position: absolute;
 }
 
-.board{
+.board, .combination{
     display: grid;
-    width: 292.72px;
-    height: 100%;
-    float: left;
 }
 
 .pegs{

@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get("/code", function(req, res){
 	let code = uuidv4();
 	app.get("/" + code, function(req, res){
-		res.sendFile(path.join(__dirname, 'public/games.html'));
+		res.sendFile(path.join(__dirname, 'public/games2.html'));
 	});
 	res.send(code);
 });
@@ -36,5 +36,20 @@ io.on('connection', (socket) => {
 
     socket.on('player', (data) => {
         io.sockets.emit('server_msg', data);
-    })
+    });
+
+		socket.on('join room', (data) => {
+			socket.join(data);
+			console.log('joined room', data);
+		});
+
+		socket.on('player comb', (comb, room_code) => {
+			console.log(comb, room_code);
+			socket.to(room_code).emit("test", comb);
+		});
+
+		socket.on('player code', (code, room_code) => {
+			console.log(code, room_code);
+			socket.to(room_code).emit("test1", code);
+		});
 });

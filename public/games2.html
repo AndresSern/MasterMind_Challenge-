@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Mastermind</title>
+		<link rel="stylesheet" type="text/css" href="./src/styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="./src/styles/games.css" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<header></header>
+		<div class="masterMind">
+			<h2>Choose your code</h2>
+			<div id="code"></div>
+			<div id="btnSubmitCode"  class="submit">Submit</div>
+		</div>
+		<main>
+			<div class="left">
+				<article class="rules">
+					<h1>MASTERMIND</h1>
+					<img class="left_img" src="./src/css/images/space_ship.png" />
+					<p>
+						Lasdaorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
+					</p>
+				</article>
+			</div>
+			<div class="center">
+				<div id="id_content" class="content">
+					<div class="combination"></div>
+					<div class="balls_content">
+						<div class="board"></div>
+						<div class="pegs">	</div>	
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="other">
+            		<div id="code">
+                		<div class="secretColor" id="secretColor1">	</div>
+                		<div class="secretColor" id="secretColor2">	</div>
+						<div class="secretColor" id="secretColor3">	</div>
+                		<div class="secretColor" id="secretColor4">	</div>
+            		</div>
+            		<div class="colorBoard">
+                		<div class="color" id="blue"></div>
+                		<div class="color" id="green"></div>
+                		<div class="color" id="red"></div>
+                		<div class="color" id="yellow"></div>
+                		<div class="color" id="orange"></div>
+                		<div class="color" id="pink"></div>
+            		</div> 
+            		<div class="currentColor"></div> 
+            		<div id="btnSubmit"  class="submit">Submit</div>
+        		</div>
+			</div>
+		</main>	
+		<footer>
+			<p class="credit">
+				Created By <a target="_blank" href="https://www.linkedin.com/in/andresgfranco/">Andres Gonzalez</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/">Adrian Vides</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/">Estefania Carvajal</a>,
+				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/">Andres Campo</a>
+			</p>
+		</footer>
+		    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module"  src="./src/components/games_copy0.js"></script>
+	</body>
+</html>
