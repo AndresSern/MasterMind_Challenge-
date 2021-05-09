@@ -1,6 +1,7 @@
-$(document).ready(function(){
 
-    const socket = io()
+$(document).ready(function(){
+	
+    const socket = io();
     // let comb_code= document.getElementById('comb_code');
     // let room_code = document.getElementById('room_code');
     // let btn = document.getElementById('send');
@@ -38,7 +39,7 @@ $(document).ready(function(){
 	});	
 
     var currentColor = "white";
-    // var currentBoardCells = ["board40", "board41", "board42", "board43"];
+    var currentBoardCells = ["board40", "board41", "board42", "board43"];
     var currentPegCells = ["peg40", "peg41", "peg42", "peg43"]
     var currentRow = 11;
     var possibleColors = ["blue", "green", "red", "yellow", "orange", "pink"];
@@ -53,7 +54,8 @@ $(document).ready(function(){
         "rgb(255, 0, 0)": "red",
         "rgb(0, 0, 255)": "blue",
         "rgb(255, 192, 203)": "pink",
-        "rgb(255, 165, 0)": "orange"
+        "rgb(255, 165, 0)": "orange",
+		"rgb(255, 165, 0)": "red"
     }
 
     //create the random color code
@@ -66,31 +68,58 @@ $(document).ready(function(){
     
     console.log(code);
 
+	//create the cells and add them to the board
+    for(let i = 0; i < 4; i++){
+		let random = Math.floor(Math.random()*(80 - 20) + 20);
+        let cell = "<div class=\"secret\" id=secretColor"+i+"></div>";
+		$(".combination").append(cell);
+		$("#secretColor"+i).css("border-radius", `${random}% ${random}% 38% ${random}% / 48% 60% 45% 42%`);
+    }
     //create the cells and add them to the board
     for(let i = 0; i < 44; i++){
-        let cell = "<div class=\"boardCell\" id=board"+i+"></div>"
-        $(".board").append(cell);
+		let random = Math.floor(Math.random()*(80 - 20) + 20);
+        let cell = "<div class=\"boardCell\" id=board"+i+"></div>";
+		$(".board").append(cell);
+		$("#board"+i).css("border-radius", `${random}% ${random}% 38% ${random}% / 48% 60% 45% 42%`);
     }
 
     //create cells for the pegs
     for(let i = 0; i < 44; i++){
         let cell = "<div class=\"pegCell\" id=peg"+i+"></div>"
         $(".pegs").append(cell);
+		$("#peg"+i).css("border-radius", $("#board"+i).css("border-radius"));
     }
 
     //change the style of the board so you can view the rows
-    $(".board").css("grid-template-rows", "repeat(11,73.18px)");
-    $(".board").css("grid-template-columns", "repeat(4,73.18px)");
-    $(".boardCell").css("border", "1px solid black");
-    $(".boardCell").css("border-radius", "50%");
+    $(".board").css("grid-template-rows", "repeat(11,9.3%)");
+    $(".board").css("grid-template-columns", "repeat(4,22%)");
+	$(".boardCell").css("width", "35%");
+	$(".boardCell").css("height", "35%");
+	$(".boardCell").css("margin-left", "70%");
+	$(".boardCell").css("margin-top", "7%");
+    $(".boardCell").css("border", "3px solid #2d2d2d");
     $(".boardCell").css("background-color", "white");
-
+	
     //change the style of the pegs
-    $(".pegs").css("grid-template-rows", "repeat(22,36.59px)");
-    $(".pegs").css("grid-template-columns", "repeat(2,36.59px");
-    $(".pegCell").css("border", "1px solid black");
-    $(".pegCell").css("border-radius", "50%")
+    $(".pegs").css("grid-template-rows", "repeat(11, 9.3%)");
+    $(".pegs").css("grid-template-columns", "repeat(4, 20%");;
     $(".pegCell").css("background-color", "gray")
+	$(".pegCell").css("width", "40%");
+	$(".pegCell").css("height", "45%");
+	$(".pegCell").css("margin-left", "50%");
+	$(".pegCell").css("margin-top", "10%");
+    $(".pegCell").css("border", "2px solid #2d2d2d");
+	
+	//change the style of the pegs
+    $(".combination").css("grid-template-rows", "repeat(1, 50%)");
+    $(".combination").css("grid-template-columns", "repeat(4, 20%");;
+    $(".secret").css("background-color", "gray")
+	$(".secret").css("width", "23%");
+	$(".secret").css("height", "83%");
+    $(".secret").css("border", "2px solid #2d2d2d");
+	$(".secret").css("margin-top", "12%");
+	$(".secret").css("margin-left", "90%");
+	
 
     //add colors to the color board
     $(".color").each(function(){
@@ -100,21 +129,24 @@ $(document).ready(function(){
     });
 
     //change the current color when the user clicks on the color board
-    $(".color").click(function(){
+   $(".color").click(function(){
         let color = $(this).attr("id");
         currentColor = color;
-        $(".currentColor").css("background-color", color);
     });
-
+	
     //change the color of a board cell on click
-    $(".boardCell").click(function(){
+    $(".boardCell").click(function(e){
+		$(".colorBoard").css("visibility", "visible");
         var id = $(this).attr("id");
-
         if(isValid(id)){
+  				$(".colorBoard").css({
+    			left: e.pageX - 35,
+    			top: e.pageY + 5
+				});
             $(this).css("background-color", currentColor);
         }
-    });
-
+    }); 
+	
     //do actions when the submit button is clicked
     $(".submit").click(function(){
         updatePegs();
@@ -157,10 +189,9 @@ $(document).ready(function(){
             hasWon = true;
             alert("Congratulations, you have won!\nThe code will now be displayed.");
             //set the colors of the code box
-            $("#secretColor1").css("background-color", code[0]);
-            $("#secretColor2").css("background-color", code[1]);
-            $("#secretColor3").css("background-color", code[2]);
-            $("#secretColor4").css("background-color", code[3]);
+			for (let i = 0; i < 4; i++) {
+				$(`#secretColor${i}`).css("background-color", code[i]);
+			} 
         }
 
         return hasWon; 
@@ -222,12 +253,13 @@ $(document).ready(function(){
             let index = codeCopy.indexOf(cell2Color);
             if(index > -1){
                 codeCopy.splice(index, 1);
-            }
+    	    }
 
             chosenCells.push(2);
 
             pegs[num-1].css("background-color", "red");
         }
+		
         if(code[2] === cell3Color){
             let num = randomNum14(filledPegs);
             filledPegs.push(num);
@@ -243,6 +275,7 @@ $(document).ready(function(){
 
             pegs[num-1].css("background-color", "red");
         }
+		
         if(code[3] === cell4Color){
             let num = randomNum14(filledPegs);
             filledPegs.push(num);
@@ -258,8 +291,7 @@ $(document).ready(function(){
 
             pegs[num-1].css("background-color", "red");
         }
-
-        
+		
         //if the code copy includes the colors of the four cells
         //  then change the pegs to white because the code copy
         //  now only includes colors that have not been accounted
@@ -298,7 +330,7 @@ $(document).ready(function(){
             pegs[num-1].css("background-color", "white");
         }     
     }
-
+	
     //choose a random number from 1-4 that is not in the given array
     function randomNum14(nums){
         //generate a number from 1-4
