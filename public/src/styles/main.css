@@ -6,11 +6,8 @@
     position: absolute;
 }
 
-.board{
+.board, .combination{
     display: grid;
-    width: 292.72px;
-    height: 100%;
-    float: left;
 }
 
 .pegs{
@@ -21,6 +18,7 @@
     margin-top: 0px;
 }
 
+/*
 .colorBoard{
     display: grid;
     grid-template-columns: repeat(2, 100px);
@@ -31,6 +29,7 @@
     margin: 0 auto;
     margin-top: 10px;
 }
+*/
 
 .currentColor{
     width: 200px;
