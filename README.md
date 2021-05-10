@@ -42,7 +42,7 @@ Used technologies:
 - `README.md`-
 
 ## Usage :arrow_forward:
-for playing a local version:
+For playing a local version:
 - type in your terminal
  ```sh
  git clone https://github.com/AndresSern/MasterMind_Challenge-.git
@@ -53,9 +53,12 @@ for playing a local version:
 - open your favorite browser an type: `localhost:5000`
 - enjoy!
 
+For online version:
+- https://mastermind.run-us-west2.goorm.io
+
 
 ## Bugs
-There was not at the moment. If found, please contact the authors.
+When selecting a circle, you have to select the color and then select the circle again to paint the circle. That should not happen, it should be painted once you selected the preferred color.
 
 ## Authors :busts_in_silhouette:
 - [Estefania Carvajal](https://www.linkedin.com/in/estephaniacalvoc/)
