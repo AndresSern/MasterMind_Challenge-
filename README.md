@@ -46,7 +46,7 @@ Used technologies:
 ## Bugs
 There was not at the moment. If found, please contact the authors.
 
-## Authors
+## Authors :busts_in_silhouette:
 - [Estefania Carvajal](https://www.linkedin.com/in/estephaniacalvoc/)
 - [Adrian Vides](https://www.linkedin.com/in/adrianvides56/)
 - [Andres Campo](https://www.linkedin.com/in/campoandres98/)
