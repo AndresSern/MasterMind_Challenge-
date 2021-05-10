@@ -21,14 +21,14 @@ main {
 }
 .left,
 .right,
-.center{
+.center {
 	background-color: #33a8c7;
 	width: 30%;
 	height: 95%;
 	padding-top: 2%;
 }
 
-.center{
+.center {
 	width: 40%;
 	text-align: center;
 }
@@ -50,7 +50,6 @@ img {
 	margin: auto;
 	margin-top: 1%;
 	margin-bottom: 15%;
-	
 }
 
 h1 {
@@ -67,43 +66,74 @@ p {
 	font-size: 110%;
 	color: #2d2d2d;
 }
-.content{
-	margin-top:7%;
-	height:83%;
+.content {
+	margin-top: 7%;
+	height: 83%;
 	position: relative;
-	background-color:white;
+	background-color: white;
 	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
 	border: 5px solid #2d2d2d;
 }
+.masterMind {
+	display: none;
+	z-index: 100;
+	width: 250px;
+	height: 25%;
+	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
+	border: 3px solid #2d2d2d;
+}
 
-.combination{
-	margin:auto;
+.combination {
+	margin: auto;
 	width: 92%;
 	height: 10%;
 	background-color: white;
 	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
 }
-.balls_content{
+.balls_content {
 	width: 100%;
-	height:89%;
-	display:flex;
-	background:white;
-	border-radius:5% 4% 14% 11% / 93% 90% 90% 100%;
-	border-bottom:3px solid #2d2d2d;
-	border-top:3px solid #2d2d2d;
+	height: 89%;
+	display: flex;
+	background: white;
+	border-radius: 5% 4% 14% 11% / 93% 90% 90% 100%;
+	border-bottom: 3px solid #2d2d2d;
+	border-top: 3px solid #2d2d2d;
 }
-.board{
+.board {
 	width: 70%;
-	height:100%;
+	height: 100%;
 }
-.pegs{
+.pegs {
 	width: 30%;
 	height: 100%;
 	border-radius: 4% 0% 0% 3% / 44% 16% 59% 48%;
-	border-left:5px solid #2d2d2d; 
+	border-left: 5px solid #2d2d2d;
 }
+.colorBoard {
+	display: grid;
+	grid-template-columns: repeat(3, 25%);
+	grid-template-rows: repeat(2, 25%);
+	position: absolute;
+	width: 75px;
+	height: 70px;
+	margin: 0 auto;
+	margin-top: 10px;
+	background-image: url("../css/images/Colors_rectangle.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	z-index: 50;
+	visibility: hidden;
+}
+.color {
+	margin-top: 100%;
+	margin-left: 30%;
+	width: 50%;
+	height: 70%;
+	border-radius: 50%;
+}
+
 footer {
-	background-color:  #fdf148;
+	background-color: #fdf148;
 	position: absolute;
 	bottom: 0;
 	width: 100%;
@@ -112,11 +142,51 @@ footer {
 	font-size: 70%;
 }
 
-.credit{
-	margin-top:0.5%;
+.credit {
+	margin-top: 0.5%;
 	color: #2d2d2d;
 }
 
-#hasWon{
-	display: none;
+#btnSubmit {
+	display: block;
+	margin-left: 25%;
+	margin-top: 25%;
+}
+#hasWon {
+	margin-top: 40%;
+	display: block;
+	border: 5px solid #2d2d2d;
+	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
+	max-width: 80%;
+	min-width: 200px;
+	text-align: center;
+	box-sizing: content-box;
+	padding: 1% 1%;
+	margin-top: 5%;
+}
+
+.playAgain,
+#backToHome {
+	width: 70%;
+	height: 30%;
+}
+#backToHome {
+	margin-bottom: 5%;
+}
+a {
+	text-decoration: none;
+}
+
+#gameOverMessage {
+	font-size: 35px;
+	font-family: "space-adventure-cursiva";
+}
+
+#box {
+	position: absolute;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	border: 2px solid #2d2d2d;
+	z-index: 10;
 }

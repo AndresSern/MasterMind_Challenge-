@@ -9,43 +9,73 @@
 		<header></header>
 		<main>
 			<div class="left">
-				<img class="left_img" src="./src/css/images/left_image_landing.png" alt="Funny ilustrated robot and shapes from space with colored dots" />
+				<img
+					class="left_img"
+					src="./src/css/images/left_image_landing.png"
+					alt="Funny ilustrated robot and shapes from space with colored dots"
+				/>
 			</div>
 			<div class="center">
 				<article class="rules">
 					<h1>MASTERMIND</h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
-						libero eget massa rutrum lobortis. Aenean viverra ipsum dui, at rutr
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
-						libero eget massa rutrum lobortis. Aenean viverra ipsum dui, at rutr
-					</p>
-					<p>Aenean viverra ipsum dui, at rutr</p>
+					<ul>
+						<li>
+							You have to guess which is the correct combination of 4 colors.
+						</li>
+						<li>You have to win 2 out of 3 rounds to win the game</li>
+						<li>
+							Once the game starts you can start guessing the correct
+							combination
+						</li>
+						<li>You only have 11 tries in each turn</li>
+					</ul>
+					<p></p>
 				</article>
 				<div id="id_content" class="content">
-					<img class="close" src="./src/css/images/close_button_cross.png"/>
+					<img class="close" src="./src/css/images/close_button_cross.png" />
 					<h2 class="choose_a_game">
-						CHOOSE <br/>
+						CHOOSE <br />
 						GAME MODE
 					</h2>
+					<div class="submit create_a_room" id="create_room">CREATE A ROOM</div>
+					<div class="submit join_a_room">JOIN A ROOM</div>
+
+					<input
+						type="text"
+						class="inputCode"
+						name="input"
+						placeholder="Type the ROOM CODE"
+					/>
+					<input type="submit" name="button" onclick="fun()" />
+
 					<div class="submit onevsone" id="onevsone">1 vs 1</div>
 					<div class="submit onevsbot" id="onevsbot">1 vs bot</div>
-					
 				</div>
 				<button class="start">START HERE</button>
 			</div>
 			<div class="right">
-				<img class="right_img" src="./src/css/images/right_img_landing_page.png" alt="Funny ilustrated robots and shapes from space with colored dots" />
+				<img
+					class="right_img"
+					src="./src/css/images/right_img_landing_page.png"
+					alt="Funny ilustrated robots and shapes from space with colored dots"
+				/>
 			</div>
 		</main>
 		<footer>
 			<p class="credit">
-				Created By <a target="_blank" href="https://www.linkedin.com/in/andresgfranco/">Andres Gonzalez</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/">Adrian Vides</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/">Estefania Carvajal</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/">Andres Campo</a>
+				Created By
+				<a target="_blank" href="https://www.linkedin.com/in/andresgfranco/"
+					>Andres Gonzalez</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/"
+					>Adrian Vides</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/"
+					>Estefania Carvajal</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/"
+					>Andres Campo</a
+				>
 			</p>
 		</footer>
 		<script type="module" src="./src/components/menu.js"></script>

@@ -1,44 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Mastermind</title>
-    <link  type="text/css" rel="stylesheet" href="./src/styles/main.css">
-</head>
+	<head>
+		<title>Mastermind</title>
+		<link type="text/css" rel="stylesheet" href="./src/styles/main.css" />
+	</head>
 
-<body>
-    <div class="socket_ex">
-        <p>Rooom</p>
-        <input type="text" id="room_code" placeholder="usename">
-        <input type="text" id="comb_code", placeholder="room number">
-        <button id="send">Send</button>
-    </div>
-    <div class="content">
-        <div class="fullBoard">
-            <div class="board"></div>
-            <div class="pegs"></div>
-        </div>
-        <div class="other">
-            <div id="code">
-                <div class="secretColor" id="secretColor1"></div>
-                <div class="secretColor" id="secretColor2"></div>
-                <div class="secretColor" id="secretColor3"></div>
-                <div class="secretColor" id="secretColor4"></div>
-            </div>
-            <div class="colorBoard">
-                <div class="color" id="blue"></div>
-                <div class="color" id="green"></div>
-                <div class="color" id="red"></div>
-                <div class="color" id="yellow"></div>
-                <div class="color" id="orange"></div>
-                <div class="color" id="pink"></div>
-            </div> 
-            <div class="currentColor"></div> 
-            <div id="btnSubmit"  class="submit">Submit</div>
-        </div>
-        
-    </div>
-    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="module" src="./src/components/games.js"></script>
-</body>
+	<body>
+		<div class="socket_ex">
+			<p>Rooom</p>
+			<input type="text" id="room_code" placeholder="usename" />
+			<input type="text" id="comb_code" , placeholder="room number" />
+			<button id="send">Send</button>
+		</div>
+		<div class="content">
+			<div class="fullBoard">
+				<div class="board"></div>
+				<div class="pegs"></div>
+			</div>
+			<div class="other">
+				<div id="code">
+					<div class="secretColor" id="secretColor1"></div>
+					<div class="secretColor" id="secretColor2"></div>
+					<div class="secretColor" id="secretColor3"></div>
+					<div class="secretColor" id="secretColor4"></div>
+				</div>
+				<div class="colorBoard">
+					<div class="color" id="blue"></div>
+					<div class="color" id="green"></div>
+					<div class="color" id="red"></div>
+					<div class="color" id="yellow"></div>
+					<div class="color" id="orange"></div>
+					<div class="color" id="pink"></div>
+				</div>
+				<div class="currentColor"></div>
+				<div id="btnSubmit" class="submit">Submit</div>
+			</div>
+		</div>
+		<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="module" src="./src/components/games.js"></script>
+	</body>
 </html>

@@ -1,26 +1,21 @@
-import { genCode } from './utils/genCode.js';
+import { genCode } from "./utils/genCode.js";
 
-const onevsone = document.getElementById('onevsone');
+const create_room = document.getElementById("create_room");
 export const btnMultiplayer = async function () {
-  const btnMul = document.createElement('div');
-  btnMul.className = 'submit multiplayer';
-  btnMul.innerText = 'Create room';
+	const btnMul = document.createElement("div");
 
-  let count = 0;
-  btnMul.addEventListener('click', async () => {
-    console.log(count);
-    if (count === 0) { /* Cambie esto == por === */
-      const code = await genCode();
-      console.log(code);
+	btnMul.style.display = "none";
+	btnMul.className = "submit multiplayer";
+	btnMul.innerText = "Create room";
 
-      const linkRoom = document.createElement('a');
-      linkRoom.href = `/${code}`;
-      linkRoom.innerText = 'Join Room';
-      onevsone.append(linkRoom);
+	const code = await genCode();
+	const linkRoom = document.createElement("a");
+	linkRoom.style.display = "none";
+	linkRoom.id = "link_join_room";
+	linkRoom.href = `/${code}`;
+	linkRoom.innerText = "Join Room";
+	create_room.append(linkRoom);
 
-      count = 1;
-    }
-  });
-
-  return btnMul;
+	document.getElementById("link_join_room").click();
+	return btnMul;
 };
