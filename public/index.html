@@ -18,18 +18,17 @@
 			<div class="center">
 				<article class="rules">
 					<h1>MASTERMIND</h1>
-					<ul>
-						<li>
-							You have to guess which is the correct combination of 4 colors.
-						</li>
-						<li>You have to win 2 out of 3 rounds to win the game</li>
-						<li>
-							Once the game starts you can start guessing the correct
-							combination
-						</li>
-						<li>You only have 11 tries in each turn</li>
-					</ul>
-					<p></p>
+					<p>
+						<h2>How To Play</h2>
+						- You have to guess which is the correct combination of 4 colors. <br />
+						- Once the game starts you can start guessing the correct combination. <br />
+						- You only have 11 tries in each turn. <br /><br />
+						<strong>1 vs bot:</strong> <br />
+						- you will loose a round if you spend the 11 tries without guessing the combination. <br /><br />
+						<strong>1 vs 1:</strong> <br />
+						- You will win a round if you guess the correct combination of 4 colors before the other player does. <br />
+						- If there is a tie in the third round, both will go to sudden death until having a unique winner.
+					</p>
 				</article>
 				<div id="id_content" class="content">
 					<img class="close" src="./src/css/images/close_button_cross.png" />
@@ -38,15 +37,10 @@
 						GAME MODE
 					</h2>
 					<div class="submit create_a_room" id="create_room">CREATE A ROOM</div>
-					<div class="submit join_a_room">JOIN A ROOM</div>
-
-					<input
-						type="text"
-						class="inputCode"
-						name="input"
-						placeholder="Type the ROOM CODE"
-					/>
-					<input type="submit" name="button" onclick="fun()" />
+					<div class="submit join_a_room">JOIN A ROOM <br />
+						<input type="text" class="inputCode" placeholder="TYPE THE ROOM CODE" />
+						<button id="joinRoombtn">JOIN</button>
+					</div>
 
 					<div class="submit onevsone" id="onevsone">1 vs 1</div>
 					<div class="submit onevsbot" id="onevsbot">1 vs bot</div>

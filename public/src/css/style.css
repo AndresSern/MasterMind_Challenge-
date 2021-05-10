@@ -32,6 +32,10 @@ main {
 	width: 34%;
 	text-align: center;
 }
+.ul,
+.li {
+	text-align: left;
+}
 
 img {
 	display: block;
@@ -141,9 +145,6 @@ p {
 	-webkit-transition: background-color 0.4s ease-out;
 	background-size: 200%;
 }
-
-/*
-.onevsbot:hover, .onevsone:hover*/
 
 .start {
 	display: block;
@@ -356,4 +357,19 @@ footer {
 	.start {
 		margin-top: -500%;
 	}
+}
+
+.inputCode {
+	border: 5px solid #2d2d2d;
+	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
+}
+
+#joinRoombtn{
+	background-color: aqua;
+	border: 5px solid #2d2d2d;
+	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
+}
+
+#joinRoombtn:hover{
+	opacity: 0.8;
 }

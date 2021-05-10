@@ -149,12 +149,13 @@ footer {
 
 #btnSubmit {
 	display: block;
-	margin-left: 25%;
-	margin-top: 25%;
+	margin-top: 120%;
+	height: 120px;
 }
 #hasWon {
+	background-color: aqua;
 	margin-top: 40%;
-	display: block;
+	display: none;
 	border: 5px solid #2d2d2d;
 	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
 	max-width: 80%;
@@ -189,4 +190,17 @@ a {
 	border-radius: 50%;
 	border: 2px solid #2d2d2d;
 	z-index: 10;
+}
+
+#actualRoom{
+	display: none;
+	border: 5px solid #2d2d2d;
+	border-radius: 13% 11% 16% 13% / 93% 90% 83% 100%;
+	margin-top: 10%;
+	padding-left: 5%;
+	font-family: "space-adventure-cursiva";
+	font-size: 150%;
+	background-color: gray;
+	color: #2d2d2d;
+	opacity: 0.9;
 }

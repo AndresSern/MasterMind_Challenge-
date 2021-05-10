@@ -12,14 +12,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/code', function (req, res) {
   const code = uuidv4();
   app.get('/' + code, function (req, res) {
-    res.sendFile(path.join(__dirname, 'public/games2.html'));
+    res.sendFile(path.join(__dirname, 'public/games.html'));
   });
   res.send(code);
 });
 
-app.get('/test', function (req, res) {
-  res.sendFile(path.join(__dirname, 'public/test.html'));
-});
 
 /* start the server */
 const server = app.listen(app.get('port'), () => {
@@ -39,16 +36,14 @@ io.on('connection', (socket) => {
 
   socket.on('join room', (data) => {
     socket.join(data);
-    console.log('joined room', data);
+    console.log(socket.id, 'joined room', data);
   });
 
   socket.on('player comb', (comb, roomCode) => {
-    console.log(comb, roomCode);
     socket.to(roomCode).emit('test', comb);
   });
 
   socket.on('player code', (code, roomCode) => {
-    console.log(code, roomCode);
     socket.to(roomCode).emit('test1', code);
   });
 
