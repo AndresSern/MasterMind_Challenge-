@@ -1,14 +1,18 @@
-let start = document.querySelector('.start');
-let rules = document.querySelector('.rules');
-let content = document.querySelector('.content');
-let close = document.querySelector('.close');
-let submit = document.querySelector('.submit');
-let onevsbot = document.querySelector('.onevsbot');
-let onevsone = document.querySelector('.onevsone');
-let create_a_room = document.querySelector('.create_a_room');
-let join_a_room = document.querySelector('.join_a_room');
+import { btnMultiplayer } from "./btnMultiplayer.js";
 
-start.addEventListener('click', ()=> {
+const start = document.querySelector(".start");
+const rules = document.querySelector(".rules");
+const content = document.querySelector(".content");
+const close = document.querySelector(".close");
+const submit = document.querySelector(".submit");
+const onevsone = document.getElementById("onevsone");
+const onevsbot = document.getElementById("onevsbot");
+let create_a_room = document.getElementById("create_room");
+let join_a_room = document.querySelector(".join_a_room");
+const inputCode = document.querySelector(".inputCode");
+const joinRoombtn = document.getElementById("joinRoombtn");
+
+start.addEventListener("click", () => {
 	start.style.visibility = "hidden";
 	rules.style.visibility = "hidden";
 	content.style.visibility = "visible";
@@ -18,7 +22,7 @@ start.addEventListener('click', ()=> {
 	onevsbot.style.transition = ".5s ease-out";
 });
 
-close.addEventListener('click', ()=> {
+close.addEventListener("click", () => {
 	start.style.visibility = "visible";
 	rules.style.visibility = "visible";
 	content.style.visibility = "hidden";
@@ -33,9 +37,30 @@ close.addEventListener('click', ()=> {
 	create_a_room.style.display = "none";
 });
 
-onevsone.addEventListener('click', ()=> {
+onevsone.addEventListener("click", () => {
 	onevsone.style.display = "none";
 	onevsbot.style.display = "none";
 	join_a_room.style.display = "block";
 	create_a_room.style.display = "block";
 });
+
+let count = 0;
+create_room.addEventListener("click", () => {
+	async function showGameModes() {
+		await btnMultiplayer();
+	}
+	if (count === 0) {
+		showGameModes();
+		count = 1;
+	}
+});
+
+onevsbot.addEventListener("click", () => {
+	window.location.href = document.URL + 'games.html';
+});
+
+joinRoombtn.addEventListener("click", () => {
+	const code = inputCode.value;
+	window.location.href = document.URL + code;
+
+})

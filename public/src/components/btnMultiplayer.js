@@ -1,25 +1,8 @@
-import {genCode} from "./utils/genCode.js";
+import { genCode } from "./utils/genCode.js";
 
-const app = document.getElementById("app");
-
+const create_room = document.getElementById("create_room");
 export const btnMultiplayer = async function () {
-	const btnMul = document.createElement("div");
-	btnMul.className = "submit multiplayer";
-	btnMul.innerText = "Multiplayer";
+	const code = await genCode();
+	window.location.href = document.URL + code;
 
-	btnMul.addEventListener("click", async () => {
-		const code = await genCode()
-		console.log(code)
-	
-		const codeText = document.createElement("p");
-		codeText.innerText = "Room's code: " + code;
-		app.append(codeText)
-
-		const linkRoom = document.createElement("a");
-		linkRoom.href = `/${code}`
-		linkRoom.innerText = "Room link"
-		app.append(linkRoom)
-	});
-	
-	return btnMul;
-}
+};

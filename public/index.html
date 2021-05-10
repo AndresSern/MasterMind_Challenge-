@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+<<<<<<< HEAD
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+=======
+>>>>>>> Adrian
 		<link rel="stylesheet" type="text/css" href="./src/css/style.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<title>Mastermind</title>
@@ -11,49 +14,71 @@
 		<main>
 			
 			<div class="left">
-				<img class="left_img" src="./src/css/images/left_image_landing.png" alt="Funny ilustrated robot and shapes from space with colored dots" />
+				<img
+					class="left_img"
+					src="./src/css/images/left_image_landing.png"
+					alt="Funny ilustrated robot and shapes from space with colored dots"
+				/>
 			</div>
 			
 			<div class="center">
 				<article class="rules">
 					<h1>MASTERMIND</h1>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
-						libero eget massa rutrum lobortis. Aenean viverra ipsum dui, at rutr
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
-						libero eget massa rutrum lobortis. Aenean viverra ipsum dui, at rutr
+						<h2>How To Play</h2>
+						- You have to guess which is the correct combination of 4 colors. <br />
+						- Once the game starts you can start guessing the correct combination. <br />
+						- You only have 11 tries in each turn. <br /><br />
+						<strong>1 vs bot:</strong> <br />
+						- you will loose a round if you spend the 11 tries without guessing the combination. <br /><br />
+						<strong>1 vs 1:</strong> <br />
+						- You will win a round if you guess the correct combination of 4 colors before the other player does. <br />
+						- If there is a tie in the third round, both will go to sudden death until having a unique winner.
 					</p>
-					<p>Aenean viverra ipsum dui, at rutr</p>
 				</article>
 				<div id="id_content" class="content">
-					<img class="close" src="./src/css/images/close_button_cross.png"/>
+					<img class="close" src="./src/css/images/close_button_cross.png" />
 					<h2 class="choose_a_game">
-						CHOOSE <br/>
+						CHOOSE <br />
 						GAME MODE
 					</h2>
-					<div class="submit create_a_room">CREATE A ROOM </div>
-					<div class="submit join_a_room">JOIN A ROOM</div>			
-					
-					<div class="submit onevsone">1 vs 1</div>
-					<div class="submit onevsbot">1 vs bot</div>
+					<div class="submit create_a_room" id="create_room">CREATE A ROOM</div>
+					<div class="submit join_a_room">JOIN A ROOM <br />
+						<input type="text" class="inputCode" placeholder="TYPE THE ROOM CODE" />
+						<button id="joinRoombtn">JOIN</button>
+					</div>
+
+					<div class="submit onevsone" id="onevsone">1 vs 1</div>
+					<div class="submit onevsbot" id="onevsbot">1 vs bot</div>
 				</div>
 				<button class="start">START HERE</button>
 			</div>
 			
 			<div class="right">
-				<img class="right_img" src="./src/css/images/right_img_landing_page.png" alt="Funny ilustrated robots and shapes from space with colored dots" />
+				<img
+					class="right_img"
+					src="./src/css/images/right_img_landing_page.png"
+					alt="Funny ilustrated robots and shapes from space with colored dots"
+				/>
 			</div>
 			
 		</main>
 		
 		<footer>
 			<p class="credit">
-				Created By <a target="_blank" href="https://www.linkedin.com/in/andresgfranco/">Andres Gonzalez</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/">Adrian Vides</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/">Estefania Carvajal</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/">Andres Campo</a>
+				Created By
+				<a target="_blank" href="https://www.linkedin.com/in/andresgfranco/"
+					>Andres Gonzalez</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/"
+					>Adrian Vides</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/"
+					>Estefania Carvajal</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/"
+					>Andres Campo</a
+				>
 			</p>
 		</footer>
 		<script type="module" src="./src/components/menu.js"></script>
