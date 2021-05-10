@@ -42,6 +42,17 @@ Used technologies:
 - `README.md`-
 
 ## Usage :arrow_forward:
+for playing a local version:
+- type in your terminal
+ ```sh
+ git clone https://github.com/AndresSern/MasterMind_Challenge-.git
+ cd MasterMid_Challenge-.git
+ npm install
+ npm start
+ ```
+- open your favorite browser an type: `localhost:5000`
+- enjoy!
+
 
 ## Bugs
 There was not at the moment. If found, please contact the authors.
