@@ -10,7 +10,7 @@ If there are duplicate colours in the guess, they cannot all be awarded a key pe
 
 Once feedback is provided, another guess is made; guesses and feedback continue to alternate until either the codebreaker guesses correctly, or all rows of the decoding boards are full.
 
-#Our Mastermind game version
+# Our Mastermind game version
 Knowing the basics about this game, we decided to build a digital version of Mastermind. So two players can play against each other. The difference with our version rules are the followings:
 - You have to guess which is the correct combination of 4 colors.
 - You have to win 2 out of 3 rounds to win the game.
