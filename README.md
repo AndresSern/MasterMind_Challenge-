@@ -1,4 +1,4 @@
-# Mastermind game
+# Mastermind game :large_blue_circle: :red_circle: :white_circle: :black_circle:
 From Wikipedia: Mastermind or Master Mind is a code-breaking game. It is known to be played with two players. The modern game with pegs was invented in 1970 by Mordecai Meirowitz, an Israeli postmaster and telecommunications expert.
 
 The two players decide in advance how many games they will play, which must be an even number. One player becomes the codemaker, the other the codebreaker. The codemaker chooses a pattern of four code pegs. Duplicates and blanks are allowed depending on player choice, so the player could even choose four code pegs of the same color or four blanks. In the instance that blanks are not elected to be a part of the game, the codebreaker may not use blanks in order to establish the final code. The chosen pattern is placed in the four holes covered by the shield, visible to the codemaker but not to the codebreaker.[3]
@@ -10,7 +10,7 @@ If there are duplicate colours in the guess, they cannot all be awarded a key pe
 
 Once feedback is provided, another guess is made; guesses and feedback continue to alternate until either the codebreaker guesses correctly, or all rows of the decoding boards are full.
 
-# Our Mastermind game version
+# Our Mastermind game version :checkered_flag:
 Knowing the basics about this game, we decided to build a digital version of Mastermind. So two players can play against each other. The difference with our version rules are the followings:
 - You have to guess which is the correct combination of 4 colors.
 - You have to win 2 out of 3 rounds to win the game.
@@ -20,14 +20,14 @@ Knowing the basics about this game, we decided to build a digital version of Mas
 - 1 vs 1: you will win a round if you guess the correct combination of 4 colors before the other player does.
 - 1 vs 1: if there is a tie in the third round, both will go to sudden death until having a unique winne
 
-## Environment
+## Environment :computer:
 So we can offer a web experience without the need of installation, this game was deployed using:
 - Goorm: Cloud IDE service where we used a container.
 - Express: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 Used technologies:
 - HTML, CSS, and Javascript.
 
-## File descriptions
+## File descriptions :open_file_folder:
 - `index.js:` Javascript script to initialize the web server.
 - `package-lock.json`: json file containing dependencies to initialize the web server.
 - `package.json:` json file containing dependencies to initialize the web server.
@@ -41,16 +41,16 @@ Used technologies:
 - `public/src/styles:` directory containing css files for the corresponding HTML pages.
 - `README.md`-
 
-## Usage
+## Usage :arrow_forward:
 
 ## Bugs
 There was not at the moment. If found, please contact the authors.
 
 ## Authors
-Estefania Carvajal - https://www.linkedin.com/in/estephaniacalvoc/
-Adrian Vides - https://www.linkedin.com/in/adrianvides56/
-Andres Campo - https://www.linkedin.com/in/campoandres98/
-Andres Gonzalez - https://www.linkedin.com/in/andresgfranco/
+- [Estefania Carvajal](https://www.linkedin.com/in/estephaniacalvoc/)
+- [Adrian Vides](https://www.linkedin.com/in/adrianvides56/)
+- [Andres Campo](https://www.linkedin.com/in/campoandres98/)
+- [Andres Gonzalez](https://www.linkedin.com/in/andresgfranco/)
 
 #License
 Public domain. No copyright protection.
