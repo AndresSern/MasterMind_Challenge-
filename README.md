@@ -47,10 +47,10 @@ Used technologies:
 There was not at the moment. If found, please contact the authors.
 
 ## Authors
-Estefania Carvajal - https://www.linkedin.com/in/estephaniacalvoc/
-Adrian Vides - https://www.linkedin.com/in/adrianvides56/
-Andres Campo - https://www.linkedin.com/in/campoandres98/
-Andres Gonzalez - https://www.linkedin.com/in/andresgfranco/
+- Estefania Carvajal - https://www.linkedin.com/in/estephaniacalvoc/
+- Adrian Vides - https://www.linkedin.com/in/adrianvides56/
+- Andres Campo - https://www.linkedin.com/in/campoandres98/
+- Andres Gonzalez - https://www.linkedin.com/in/andresgfranco/
 
 #License
 Public domain. No copyright protection.
