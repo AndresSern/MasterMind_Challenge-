@@ -8,56 +8,84 @@
 	</head>
 	<body>
 		<header></header>
+
 		<main>
 			<div class="left">
 				<article class="rules">
 					<h1>MASTERMIND</h1>
 					<img class="left_img" src="./src/css/images/space_ship.png" />
 					<p>
-						Lasdaorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-						magna sem, sagittis nec risus et, mollis efficitur libero. Donec a
+						<h2>How To Play</h2>
+						- You have to guess which is the correct combination of 4 colors. <br />
+						- Once the game starts you can start guessing the correct combination. <br />
+						- You only have 11 tries in each turn. <br /><br />
+						<strong>1 vs bot:</strong> <br />
+						- you will loose a round if you spend the 11 tries without guessing the combination. <br /><br />
+						<strong>1 vs 1:</strong> <br />
+						- You will win a round if you guess the correct combination of 4 colors before the other player does. <br />
+						- If there is a tie in the third round, both will go to sudden death until having a unique winner.
 					</p>
 				</article>
 			</div>
 			<div class="center">
+				<div class="masterMind">
+					<h2>Choose your code</h2>
+					<div id="code"></div>
+					<div id="btnSubmitCode" class="submit">Submit</div>
+				</div>
 				<div id="id_content" class="content">
 					<div class="combination"></div>
 					<div class="balls_content">
 						<div class="board"></div>
-						<div class="pegs">	</div>	
+						<div class="pegs"></div>
 					</div>
 				</div>
 			</div>
 			<div class="right">
 				<div class="other">
-            		<div id="code">
-                		<div class="secretColor" id="secretColor1">	</div>
-                		<div class="secretColor" id="secretColor2">	</div>
-						<div class="secretColor" id="secretColor3">	</div>
-                		<div class="secretColor" id="secretColor4">	</div>
-            		</div>
-            		<div class="colorBoard">
-                		<div class="color" id="blue"></div>
-                		<div class="color" id="green"></div>
-                		<div class="color" id="red"></div>
-                		<div class="color" id="yellow"></div>
-                		<div class="color" id="orange"></div>
-                		<div class="color" id="pink"></div>
-            		</div> 
-            		<div id="btnSubmit"  class="submit">Submit</div>
-        		</div>
+					<div class="colorBoard">
+						<div class="color" id="blue"></div>
+						<div class="color" id="green"></div>
+						<div class="color" id="red"></div>
+						<div class="color" id="yellow"></div>
+						<div class="color" id="orange"></div>
+						<div class="color" id="pink"></div>
+					</div>
+					<div id="btnSubmit" class="submit">Check Code</div>
+					<div id="actualRoom">Room Noº: <br /></div>
+					<div id="hasWon">
+						<h3 id="gameOverMessage"></h3>
+						<br />
+						<div class="submit playAgain">
+							<a id="playAgain" href="">Play Again</a>
+						</div>
+						<br />
+						<div class="submit" id="backToHome">
+							<a href="/">Back To Home</a>
+						</div>
+					</div>
+				</div>
 			</div>
-		</main>	
+		</main>
 		<footer>
 			<p class="credit">
-				Created By <a target="_blank" href="https://www.linkedin.com/in/andresgfranco/">Andres Gonzalez</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/">Adrian Vides</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/">Estefania Carvajal</a>,
-				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/">Andres Campo</a>
+				Created By
+				<a target="_blank" href="https://www.linkedin.com/in/andresgfranco/"
+					>Andres Gonzalez</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/adrianvides56/"
+					>Adrian Vides</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/estephaniacalvoc/"
+					>Estefania Carvajal</a
+				>,
+				<a target="_blank" href="https://www.linkedin.com/in/campoandres98/"
+					>Andres Campo</a
+				>
 			</p>
 		</footer>
-		    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script  src="./src/components/games.js"></script>
+		<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="module" src="./src/components/games.js"></script>
 	</body>
 </html>
